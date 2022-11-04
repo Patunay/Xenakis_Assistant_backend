@@ -1,0 +1,25 @@
+Classes:
+    Pitches
+    Collections
+    Chords
+
+
+
+
+Architecture:
+
+    Global  ---> Global Instrumentation     Last item to be added
+        Macrosection    ---> Local Instrumentation
+            Sections attributes ---> "function": Exposition, transition,??? ,,,, Specific Instrumentation
+                local attributes ---> subdivision creator, overall register (high,low)
+            
+            
+
+
+[{'Placement': 1, 'Lenght': 200, 'Pace': 0.141, 'Density': 0.1512, 'Rythmic Complexity': 0.6347, 'Characteristics': 'iagfa', 'Section Attributes': {'Total sections': 2, 'Section Lenghts': [100, 100], 'Functions': ['exposition', 'development'], 'Subdivision Locators': [236, 4267, 236, 5385, 469460]}}, {'Placement': 2, 'Lenght': 330, 'Pace': 0.7242, 'Density': 0.64372, 'Rythmic Complexity': 0.12412, 'Characteristics': '1ygaf', 'Section Attributes': {'Total sections': 3, 'Section Lenghts': [50, 120, 160], 'Functions': ['development', 'expostion', 'recapitulation'], 'Subdivision Locators': [236, 4267, 236, 5385, 469460]}}]
+
+Tot = 600
+
+a = 230
+b = 141
+c = 229
