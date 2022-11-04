@@ -61,6 +61,13 @@ class Time_Utilities():
         except:
             return print("\nEXCEPTION:\n\tTime entered in a incorrect format, make sure time is entered as integer")
 
+
+
+
+
+
+
+
 def true_false_input_handler(input):
     answer = int(input)
     if answer == 1:
@@ -73,6 +80,7 @@ def true_false_input_handler(input):
 
 def Set__Total_Macrosections(totalseconds):
     def set_exact_lenght(total_macrosections, tot_sec):
+        total_in_ms = tot_sec
         total_in_sec = tot_sec
 
         print("Set custom lenghts?")
@@ -116,12 +124,15 @@ def Set__Total_Macrosections(totalseconds):
     # Create While retry 
     confirm_flag = False
     while confirm_flag == False:
-        Total_Macrosections = int(input("Set Total of macrosections: "))
+        Total_Macrosections = int(input("Set Total of macrosections: "))    # input macrosection total
         print()
-        uniform_macrosection_len = int(totalseconds / Total_Macrosections)
+
+        uniform_macrosection_len = int(totalseconds / Total_Macrosections)  # get equal macrosection division
+
         print(f"The lenght of uniform macrosection is: {uniform_macrosection_len} sec.")
 
         uniform_macrosection_len_string = Time_Utilities.ms2hr_min_sec(uniform_macrosection_len)
+
         print(f"The lenght of uniform macrosection is: {uniform_macrosection_len_string}\n")
 
         confirm_flag = input("Confirm[1] Retry[0]: ")
@@ -131,6 +142,9 @@ def Set__Total_Macrosections(totalseconds):
     # Set lenghts
     lenght_list = set_exact_lenght(Total_Macrosections,totalseconds)
     return lenght_list
+
+
+
 
 
 
