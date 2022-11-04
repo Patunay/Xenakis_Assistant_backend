@@ -5,7 +5,6 @@ Music Generation Backend
 '''
 
 # Utility Classes & Functions
-
 class Time_Utilities():
     def hr_min_sec2ms(hr_min_sec):  # input time as: [hr:mn:sec]
         try:
@@ -61,133 +60,125 @@ class Time_Utilities():
         except:
             return print("\nEXCEPTION:\n\tTime entered in a incorrect format, make sure time is entered as integer")
 
-
-
-
-
-
-
-
-def true_false_input_handler(input):
-    answer = int(input)
-    if answer == 1:
-        answer = True
-    elif answer == 0:
-        answer = False
-    else:
-        print("Error, entered value is neither 0 or 1")
-    return answer
-
-def Set__Total_Macrosections(totalseconds):
-    def set_exact_lenght(total_macrosections, tot_sec):
-        total_in_ms = tot_sec
-        total_in_sec = tot_sec
-
-        print("Set custom lenghts?")
-        trigger_flag = input("Yes[1] No[0]: ")
-        trigger_flag = true_false_input_handler(trigger_flag)
-        print()
-
-        if trigger_flag == True:
-            lenght_container = []
-            retry_flag = True
-            while retry_flag == True:
-                for i in range(total_macrosections):
-                    print(f"Remaining seconds: {total_in_sec}")
-                    user_def_len = int(input(f"Macrosection[{i+1}] of {total_macrosections}\nSet lenght in seconds: "))
-                    lenght_container.append(user_def_len)
-                    total_in_sec = total_in_sec - user_def_len
-                    print()
-
-                if sum(lenght_container) !=  tot_sec:
-                    print("Error, the sum of all Macrosection lenghts does not equal the total duration.")
-                    print("Retry?")
-                    retry_flag = input("Yes[1] No[0]: ")
-                    retry_flag = true_false_input_handler(retry_flag)
-                    if retry_flag == True:
-                        total_in_sec = tot_sec
-                        lenght_container = []
-                    else:
-                        break
-
-                else:
-                    retry_flag = False
-                    pass
-
-        else: 
-            lenght_container = []   # If uniform lenghts (equal)
-            for i in range(total_macrosections):
-                lenght_container.append(uniform_macrosection_len_string)
-        return lenght_container
-
-    # Main Body of Method   
-    # Create While retry 
-    confirm_flag = False
-    while confirm_flag == False:
-        Total_Macrosections = int(input("Set Total of macrosections: "))    # input macrosection total
-        print()
-
-        uniform_macrosection_len = int(totalseconds / Total_Macrosections)  # get equal macrosection division
-
-        print(f"The lenght of uniform macrosection is: {uniform_macrosection_len} sec.")
-
-        uniform_macrosection_len_string = Time_Utilities.ms2hr_min_sec(uniform_macrosection_len)
-
-        print(f"The lenght of uniform macrosection is: {uniform_macrosection_len_string}\n")
-
-        confirm_flag = input("Confirm[1] Retry[0]: ")
-        confirm_flag = true_false_input_handler(confirm_flag)
-        print()
-
-    # Set lenghts
-    lenght_list = set_exact_lenght(Total_Macrosections,totalseconds)
-    return lenght_list
-
-
-
-
-
-
 # Main Methods
+def Global_Attribute_Set():
+    # Private Methods
+    def instrumentation_set(intruments):
+        intruments = intruments.replace(" ","")
+        intrumentation_list = intruments.split(",")
+        return intrumentation_list
+    def initialize_Macrosections(num_macro, total_dur_ms):
+        # eventually add diverse modes of time representation
+        # Or 
+        # Show them all [ms, sec, minutes, hr:mn:sec]
+        num_macro = int(num_macro)  # Convert to int
 
-def Xenakis_Notation_Backend():
-    def Global_Attribute_Set():
-        def instrumentation_set(intruments):
-            intruments = intruments.replace(" ","")
-            intrumentation_list = intruments.split(",")
-            return intrumentation_list
+        # Calculate equal lenghts of macrosections
+        print("_-_-_-_-")
+        equal_len_ms = total_dur_ms/num_macro
+        print(f"The lenght of uniform macrosection is: {equal_len_ms} ms.")
+        equal_len_str = Time_Utilities.ms2hr_min_sec(equal_len_ms)
+        print(f"The lenght of uniform macrosection is: {equal_len_str}\n")
 
-        def initialize_Macrosections(num_macro, total_dur):
-            num_macro = int(num_macro)
-            macrosection_lenghts = []
-            for i in range(total_macro_sec):
-                duration = int(input(f"Enter duration for Macrosection{i+1} in ms.: ")) # evetunally add diverse modes for convertion
-                remaining_dur = total_dur - duration
+        print("Keep uniform lenghts or set custom lenghts?")
+        flag = int(input("Keep uniform[1] Set Custom[0]: "))
 
-                if remaining_dur <= 0:
-                    return
+        macrosec_lenghts = []
+        if flag == 1:   # Keep uniform
+            for i in range(num_macro):
+                macrosec_lenghts.append(equal_len_ms)
+            return macrosec_lenghts
 
-                macrosection_lenghts.append(duration)
-
-
-        # Define Global intrumentation
-        # Global_Instrumentation = instrumentation_set(input("Define Instrumentation (separate insturments with \",\": "))
-        # print(Global_Instrumentation)
-
-        # Define Global lenght
-        Total_lenght_ms = Time_Utilities.hr_min_sec2ms(input("Set Total Lenght(in HH:MM:SS): "))
-        # print(Total_lenght_ms)
-
-        # Define Macrosections
-        total_macro_sec = Set__Total_Macrosections(Total_lenght_ms)
-
-
-        # return (Global_Instrumentation,Total_lenght_ms,)
+        elif flag == 0: # Set custom
+            filled_time = 0
+            rem_time_ms = total_dur_ms - filled_time
+            for i in range(num_macro):
+                if i+1 == num_macro:
+                    macro_dur_ms = rem_time_ms
+                    macrosec_lenghts.append(macro_dur_ms)
+                    return macrosec_lenghts
+                else:
+                    print("_-_-_-_-")
+                    print(f"Macrosection {i+1}")
+                    print(f"Remaining miliseconds: {rem_time_ms}")
+                    rem_dur_str = Time_Utilities.ms2hr_min_sec(rem_time_ms)
+                    print(f"Remaining time: {rem_dur_str}")
+                    macro_dur_ms = int(input("Set lenght in ms.: "))
+                    rem_time_ms = rem_time_ms - macro_dur_ms
+                    if rem_time_ms < 0:
+                        return print("Error, remaining time is negative")
+                    macrosec_lenghts.append(macro_dur_ms)
+    def delta_mapping():
+        # defines general delta amount for each macrosection
+        # where delta = float in range [0.000... to 1.0]
+        # represents degree of similarity or contrast between macrosections
+        # 1st macrosection always has a delta of 0
+        # 0 = contrasting
+        # 1 = similar
+        pass     
+    def dynamic_mapping():
+        # defines general dynamic ranges for each macroseaction
+        # using heathmap?
+        pass 
+    def polyphony_mapping():
+        # defines general polyphony amount for each macrosection
+        pass
+    def ryth_density_mapping():
+        # defines general rythmic density for each macrosection
+        pass
+    def pace_mapping():
+        # defines general pace for each macrosection
+        pass
+    def global_att_formating(intrumentation,total_len_ms,macro_sec_data,delta_data,dynamic_data,polyphony_data,ryth_dens_data,pace_data):
+        # Organize and output data as a dictionary
         return
 
+    # Define Parameters
+    Global_Instrumentation = instrumentation_set(input("Define Instrumentation (separate insturments with \",\": "))
+    Total_lenght_ms = Time_Utilities.hr_min_sec2ms(input("\nSet Total Lenght(in HH:MM:SS): "))
+    total_macro_sec = initialize_Macrosections(input("\nSet number of Macrosections: "),Total_lenght_ms)
+    delta_values = delta_mapping()
+    dynamic_values = dynamic_mapping()
+    polyphony_values = polyphony_mapping()
+    rythm_density_values = ryth_density_mapping()
+    pace_values = pace_mapping()
 
+    # Organize and Join Paramenters
+    global_attr = global_att_formating(Global_Instrumentation,Total_lenght_ms,total_macro_sec,delta_values,dynamic_values,polyphony_values,rythm_density_values,pace_values)
+    return global_attr
 
-    Global_Attribute_Set()
+def Macrosection_Attribute_Set():
+    ''''
+    Define:
+        -Macrosection intrumentation
+        -Number of Sections
+            for each section:
+                lenght
+        -Define functional attributes:
+            (Exposition,Development,Recapitualition,transition,episode, etc...)
+        '''
     return
+
+def Section_Attribute_Set():
+    '''
+    for each macrosection:
+        for each section in macrosection finetune values of: **
+            -delta
+            -dynamic
+            -polyphony
+            -rythmic density
+            -pace
+    Notes:
+    ** From "general" values defined at the creation of the macrosection, modify the individual values of each section so that the average value of the set of sections (that conform a individual macrosection) equates or aproximates the previously defined "general value"
+    '''
+    return
+
+def Xenakis_Notation_Backend():
+    Global_Attribute_Set()
+    Macrosection_Attribute_Set()
+    Section_Attribute_Set()
+    return
+
+
 
 Xenakis_Notation_Backend()
