@@ -1,4 +1,4 @@
-# Xenakis*Assistant_backend <font size="3" >\_by Carlos Mauro* </font>
+# Xenakis_Assistant_backend <font size="3" >\_by Carlos Mauro\* </font>
 
 **Copyright © CMG Solutions - All Rights Reserved**
 
