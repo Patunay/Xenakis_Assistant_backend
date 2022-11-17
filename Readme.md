@@ -23,6 +23,7 @@ Xenakis_Assistant_backend supports unlimited levels of abstraction when organizi
     - Describes the total lenght of the piece in ms.
   - Global Intrumentation
     - Defines all intrumentation that is used in the piece.
+    - **Global intrumentation parameter defines overal pitch range of the piece.**
   - Number of macrosections
     - Defines number of macrosections in the piece.
   - Lenght of macrosections
@@ -157,9 +158,15 @@ Currently, There are 2 possible uses for XAb:
           - Work on y transition
           - Revise proportions of a particular structural element
   - XAb also opens the path for creating the best virtual assistant for any given composer using machine learning.
-    - The virtual assistant will learn from the user and will taylor the suggestions based on recollected data.
+    - The virtual assistant will learn from the user and will taylor the suggestions based on collected data.
 - Serve as a data backend that a artificial intelligence will use to conceptualize and create brand new pieces of music using structural organization hierachies.
-  - Computer generated composition based on random parameter input
+  - Computer generated composition based on random parameter input.
+  - Diverse levels possible thanks to structural elements conforming a given piece.
+    - Can either generate:
+      - Whole Piece
+      - Couple of Macro-sections
+      - All sections
+      - Etc...
 
 **Current version in development: Pre_Alpha_0.0**
 

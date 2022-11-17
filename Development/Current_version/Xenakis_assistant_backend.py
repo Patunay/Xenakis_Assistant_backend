@@ -108,7 +108,7 @@ def Global_Attribute_Set():
                     if rem_time_ms < 0:
                         return print("Error, remaining time is negative")
                     macrosec_lenghts.append(macro_dur_ms)
-    def delta_mapping():
+    def delta_mapping():    # Possibly calculated by coorelating all other params
         # defines general delta amount for each macrosection
         # where delta = float in range [0.000... to 1.0]
         # represents degree of similarity or contrast between macrosections
@@ -117,8 +117,19 @@ def Global_Attribute_Set():
         # 1 = similar
         pass     
     def dynamic_mapping():
-        # defines general dynamic ranges for each macroseaction
-        # using heathmap?
+        '''
+        Defines general dynamic ranges for each macroseaction
+        Using heathmap
+        -----
+        Heathmap dataset parameters:
+            - Using Seaborn Lib + Pandas?
+            - Size of heathmap dataframe:
+                - x = time in ms.
+                - y = musical register.
+                    - Deterministic aproach to musical register handling.
+            - Will influence pitch and harmonic information. Because of Y assignation of a given dynamic.
+        
+        '''
         pass 
     def polyphony_mapping():
         # defines general polyphony amount for each macrosection
@@ -168,6 +179,7 @@ def Section_Attribute_Set():
             -polyphony
             -rythmic density
             -pace
+        Define further estructural Divisions.
     Notes:
     ** From "general" values defined at the creation of the macrosection, modify the individual values of each section so that the average value of the set of sections (that conform a individual macrosection) equates or aproximates the previously defined "general value"
     '''
