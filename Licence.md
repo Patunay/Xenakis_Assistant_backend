@@ -16,7 +16,7 @@ This EULA agreement shall apply only to the Software supplied by **CMG Solutions
 
 **CMG Solutions** hereby grants you a personal, non-transferable, non-exclusive licence to use the **XAb** software on your devices in accordance with the terms of this EULA agreement.
 
-You are permitted to load the **Hands2MIDIChannelAssign** software (for example a PC, laptop, mobile or tablet) under your control. You are responsible for ensuring your device meets the minimum requirements of the **XAb** software.
+You are permitted to load the **XAb** software (for example a PC, laptop, mobile or tablet) under your control. You are responsible for ensuring your device meets the minimum requirements of the **XAb** software.
 
 ## You are **not** permitted to:
 
