@@ -12,7 +12,7 @@ _Written by Carlos Camilo Mauro Galvez [cmg.solutions.a@gmail.com], 11/14/2022_
 
 Xenakis_Assistant_backend (XAb) is a data backend that organizes the musical information that will be used for computer-generated and computer-assisted composition utilities that will be featured in the Xenakis software.
 
-Xenakis_Assistant_backend organizes (or creates depending on mode) musical information using formal arrangment analysis as the main classifier factor.
+Xenakis_Assistant_backend organizes (or creates depending on mode) musical information using formal arrangement analysis as the main classifier factor.
 
 Xenakis_Assistant_backend supports unlimited levels of abstraction when organizing musical information.
 
